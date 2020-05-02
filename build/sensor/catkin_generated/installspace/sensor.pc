@@ -1,0 +1,8 @@
+prefix=/home/pi/winch_ws/install
+
+Name: sensor
+Description: Description of sensor
+Version: 0.0.0
+Cflags: -I/home/pi/winch_ws/install/include
+Libs: -L/home/pi/winch_ws/install/lib -lsensor
+Requires: roscpp rospy std_msgs message_runtime

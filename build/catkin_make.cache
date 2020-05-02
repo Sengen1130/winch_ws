@@ -1,0 +1,2 @@
+sensor:system_control
+-DCATKIN_DEVEL_PREFIX=/home/pi/winch_ws/devel -DCMAKE_INSTALL_PREFIX=/home/pi/winch_ws/install -G Unix Makefiles

@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<launch>
+    <node pkg="sensor" name="measure_encoder_winch3" type="measure_encoder_winch3" output="screen" launch-prefix="sudo -E"/>
+    <node pkg="sensor" name="measure_angles_winch3" type="angle_pub_winch3.py"/>
+</launch>
+
+<!--エンコーダとポテンショメータのpublish-->
+<!--if show [cannot launch node of type ....], you have to type [chmod +x {fileName}]-->

@@ -1,0 +1,8 @@
+prefix=/home/pi/winch_ws/install
+
+Name: system_control
+Description: Description of system_control
+Version: 0.0.0
+Cflags: -I/home/pi/winch_ws/install/include
+Libs: -L/home/pi/winch_ws/install/lib -lsystem_control
+Requires: roscpp rospy std_msgs message_runtime
