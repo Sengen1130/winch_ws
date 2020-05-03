@@ -14,12 +14,11 @@
 class DigitalToAnalog
 {
 public:
-    double DAC_MAX = 4096;
-    double DAC_VDD = 5.0;
-
-    int fd;
+   int fd;
     int mcp4725_address = 0x60; //D/Aコンバータのアドレス
     uint8_t writeBuf[3];
+    double DAC_MAX = 4096;
+    double DAC_VDD = 5.0;
 
     //関数の説明
     //D/A convert
