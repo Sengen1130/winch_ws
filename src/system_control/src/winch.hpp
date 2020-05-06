@@ -13,7 +13,7 @@
 class Winch
 {
 private:
-    ros::NodeHandle nh; //ノードハンドラの作成
+
     ros::Publisher wire_length_pub;                          //winch1のワイヤ長さpublish宣言         /*winch1 to winch◯　◯:winch番号*/
     ros::Publisher record_pub;                         //winch1の目標長さと実際の長さpublish宣言        /*winch1 to winch◯　◯:winch番号*/
     ros::Publisher desPos_pub;                      //winch1の目標交点位置publish宣言        /*winch1 to winch◯　◯:winch番号*/

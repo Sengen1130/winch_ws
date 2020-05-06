@@ -1,0 +1,14 @@
+
+calibrate_1to2.cpp
+calibrate_1to3.cpp
+setup_winch1.cpp
+test_kinematics.cpp
+position_control_winch1.cpp
+
+winch.hpp
+computed_torque.hpp
+digital_filter.hpp
+digital_to_analog.hpp
+interpolation_function.hpp
+kinematics.hpp
+winch.cpp

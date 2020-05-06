@@ -7,6 +7,7 @@
 #include <ros/ros.h>
 #include <cmath>
 #include <iostream>
+#include <time.h>
 
 bool interrupted = false;
 
@@ -21,6 +22,7 @@ mySigintHandler(int sig)
 }
 
 Winch::Winch(){
+    ros::NodeHandle nh; //ノードハンドラの作成
     wire_length_pub = nh.advertise<std_msgs::Float64>("wire_length_winch1", 10);                          //winch1のワイヤ長さpublish宣言         /*winch1 to winch◯　◯:winch番号*/
     desPos_pub = nh.advertise<geometry_msgs::Vector3>("desire_position_winch1", 10);                      //winch1の目標交点位置publish宣言        /*winch1 to winch◯　◯:winch番号*/
     record_pub = nh.advertise<system_control::Record>("record_data_winch1", 100);                         //winch1の目標長さと実際の長さpublish宣言        /*winch1 to winch◯　◯:winch番号*/
@@ -93,7 +95,7 @@ int main(int argc, char **argv)
     InterpolationFunction interpolation;
     ComputedTorque torque;
     DigitalFilter filter;
-
+    
     ros::Rate rate(1000); //プログラム実行周期
 
     d2a.writeBuf[0] = 0b01000000;
@@ -109,11 +111,6 @@ int main(int argc, char **argv)
 
     winch.setupTime1 = ros::Time::now() + ros::Duration(0.5);
     winch.setupTime2 = ros::Time::now() + ros::Duration(1.0);
-
-    //////////////////////////////////
-    winch.iniLen2 = 5.0;
-    winch.iniLen3 = 5.0;
-    //////////////////////////////////
 
     //条件実行文の説明
     while (ros::Time::now() < winch.setupTime1)
@@ -152,6 +149,12 @@ int main(int argc, char **argv)
 
     winch.T0 = ros::Time::now();
     winch.prevTime = winch.T0; //prevTimeの設定
+    
+    //////////////////////////////////
+    winch.iniLen1 = 0;
+    winch.iniLen2 = 5.0;
+    winch.iniLen3 = 5.59;
+    //////////////////////////////////
 
     //条件実行文の説明
     //直線軌道
@@ -171,15 +174,15 @@ int main(int argc, char **argv)
         winch.curDesCountAcc = (winch.curDesCountVel - winch.prevDesCountVel) / winch.diff;
         winch.inpCountVel = filter.second_order_backward_diff(winch.curCount, winch.prevCount1, winch.prevCount2); //RCフィルターへの入力カウント速度
         winch.curCountVel = filter.low_pass_filter(winch.inpCountVel, winch.inpCountVel1, winch.inpCountVel2, winch.outCountVel1, winch.outCountVel2);
-
         winch.input = torque.input_volt(winch.curDesCount, winch.curDesCountVel, winch.curCount, winch.curCountVel, winch.curDesCountAcc); //モータドライバへの入力電圧
         d2a.set_analog(d2a.volt_to_int16(winch.input), d2a.writeBuf, d2a.fd);
+        
+        std::cout <<"curDesLen="<<winch.curDesLen<<"\n";
+        std::cout <<"input="<<winch.input<<"\n";
 
         if (winch.counter == 10)
         {
             winch.desPos_msg = winch.curDesPos;
-
-
             winch.msg_record.curTime = (winch.curTime - winch.T0).toSec();
             winch.msg_record.curLen = winch.curLen;
             winch.msg_record.curDesLen = winch.curDesLen;
