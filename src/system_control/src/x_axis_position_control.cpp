@@ -132,6 +132,11 @@ int main(int argc, char **argv)
 
     xAxisPos.T0 = ros::Time::now();
     xAxisPos.prevTime = xAxisPos.T0; //prevTimeの設定
+    
+    /////////////////////////////////////
+    xAxisPos.iniLen_constVel = 3.0; 
+    xAxisPos.iniLen_xAxisPos = 3.0;
+    ////////////////////////////////////
 
     //条件実行文の説明
     //直線軌道

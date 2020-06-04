@@ -673,6 +673,19 @@ system_control_generate_messages_lisp/fast:
 .PHONY : system_control_generate_messages_lisp/fast
 
 #=============================================================================
+# Target rules for targets named system_control_generate_messages_nodejs
+
+# Build rule for target.
+system_control_generate_messages_nodejs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 system_control_generate_messages_nodejs
+.PHONY : system_control_generate_messages_nodejs
+
+# fast build rule for target.
+system_control_generate_messages_nodejs/fast:
+	$(MAKE) -f system_control/CMakeFiles/system_control_generate_messages_nodejs.dir/build.make system_control/CMakeFiles/system_control_generate_messages_nodejs.dir/build
+.PHONY : system_control_generate_messages_nodejs/fast
+
+#=============================================================================
 # Target rules for targets named system_control_geneus
 
 # Build rule for target.
@@ -775,19 +788,6 @@ system_control_gennodejs: cmake_check_build_system
 system_control_gennodejs/fast:
 	$(MAKE) -f system_control/CMakeFiles/system_control_gennodejs.dir/build.make system_control/CMakeFiles/system_control_gennodejs.dir/build
 .PHONY : system_control_gennodejs/fast
-
-#=============================================================================
-# Target rules for targets named calibrate_1to2
-
-# Build rule for target.
-calibrate_1to2: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 calibrate_1to2
-.PHONY : calibrate_1to2
-
-# fast build rule for target.
-calibrate_1to2/fast:
-	$(MAKE) -f system_control/CMakeFiles/calibrate_1to2.dir/build.make system_control/CMakeFiles/calibrate_1to2.dir/build
-.PHONY : calibrate_1to2/fast
 
 #=============================================================================
 # Target rules for targets named system_control_generate_messages
@@ -906,32 +906,6 @@ setup_winch1/fast:
 	$(MAKE) -f system_control/CMakeFiles/setup_winch1.dir/build.make system_control/CMakeFiles/setup_winch1.dir/build
 .PHONY : setup_winch1/fast
 
-#=============================================================================
-# Target rules for targets named system_control_generate_messages_nodejs
-
-# Build rule for target.
-system_control_generate_messages_nodejs: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 system_control_generate_messages_nodejs
-.PHONY : system_control_generate_messages_nodejs
-
-# fast build rule for target.
-system_control_generate_messages_nodejs/fast:
-	$(MAKE) -f system_control/CMakeFiles/system_control_generate_messages_nodejs.dir/build.make system_control/CMakeFiles/system_control_generate_messages_nodejs.dir/build
-.PHONY : system_control_generate_messages_nodejs/fast
-
-#=============================================================================
-# Target rules for targets named calibrate_1to3
-
-# Build rule for target.
-calibrate_1to3: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 calibrate_1to3
-.PHONY : calibrate_1to3
-
-# fast build rule for target.
-calibrate_1to3/fast:
-	$(MAKE) -f system_control/CMakeFiles/calibrate_1to3.dir/build.make system_control/CMakeFiles/calibrate_1to3.dir/build
-.PHONY : calibrate_1to3/fast
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -984,6 +958,7 @@ help:
 	@echo "... sensor_generate_messages_eus"
 	@echo "... sensor_generate_messages_lisp"
 	@echo "... system_control_generate_messages_lisp"
+	@echo "... system_control_generate_messages_nodejs"
 	@echo "... system_control_geneus"
 	@echo "... system_control_genlisp"
 	@echo "... system_control_gencpp"
@@ -992,7 +967,6 @@ help:
 	@echo "... _system_control_generate_messages_check_deps_Record"
 	@echo "... _system_control_generate_messages_check_deps_Timing"
 	@echo "... system_control_gennodejs"
-	@echo "... calibrate_1to2"
 	@echo "... system_control_generate_messages"
 	@echo "... system_control_generate_messages_py"
 	@echo "... system_control_generate_messages_cpp"
@@ -1002,8 +976,6 @@ help:
 	@echo "... _system_control_generate_messages_check_deps_adder"
 	@echo "... test_kinematics"
 	@echo "... setup_winch1"
-	@echo "... system_control_generate_messages_nodejs"
-	@echo "... calibrate_1to3"
 .PHONY : help
 
 

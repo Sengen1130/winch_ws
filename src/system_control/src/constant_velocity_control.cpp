@@ -76,8 +76,6 @@ int main(int argc, char **argv)
     d2a.check_i2c();
 
     d2a.set_analog(d2a.volt_to_int16(2.50), d2a.writeBuf, d2a.fd);
-    std::cout << "volt = 0"
-              << "\n";
 
     ros::Duration(5.0).sleep();
 

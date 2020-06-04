@@ -110,23 +110,3 @@ include_directories(
  target_link_libraries(setup_winch1
    ${catkin_LIBRARIES}
  )
-
-# add_executable(${PROJECT_NAME}_node src/sensor_node.cpp)
- add_executable(calibrate_1to2
-  src/calibrate_1to2.cpp
-  )
-  
-#add_dependencies(measure_encoder_winch3 ${$PEOJECT_NAME}_EXPORTED_TARGETS}${catkin_EXPORTED_TARGETS})
- target_link_libraries(calibrate_1to2
-   ${catkin_LIBRARIES}
- )
-
-# add_executable(${PROJECT_NAME}_node src/sensor_node.cpp)
- add_executable(calibrate_1to3
-  src/calibrate_1to3.cpp
-  )
-  
-#add_dependencies(measure_encoder_winch3 ${$PEOJECT_NAME}_EXPORTED_TARGETS}${catkin_EXPORTED_TARGETS})
- target_link_libraries(calibrate_1to3
-   ${catkin_LIBRARIES}
- )

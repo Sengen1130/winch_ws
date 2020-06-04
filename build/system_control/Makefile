@@ -90,6 +90,27 @@ install/fast: preinstall/fast
 	/usr/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
+
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -111,27 +132,6 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
-
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-
-.PHONY : test/fast
-
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -179,6 +179,21 @@ system_control_generate_messages_lisp: system_control/CMakeFiles/system_control_
 system_control_generate_messages_lisp/fast:
 	cd /home/pi/winch_ws/build && $(MAKE) -f system_control/CMakeFiles/system_control_generate_messages_lisp.dir/build.make system_control/CMakeFiles/system_control_generate_messages_lisp.dir/build
 .PHONY : system_control_generate_messages_lisp/fast
+
+# Convenience name for target.
+system_control/CMakeFiles/system_control_generate_messages_nodejs.dir/rule:
+	cd /home/pi/winch_ws/build && $(MAKE) -f CMakeFiles/Makefile2 system_control/CMakeFiles/system_control_generate_messages_nodejs.dir/rule
+.PHONY : system_control/CMakeFiles/system_control_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+system_control_generate_messages_nodejs: system_control/CMakeFiles/system_control_generate_messages_nodejs.dir/rule
+
+.PHONY : system_control_generate_messages_nodejs
+
+# fast build rule for target.
+system_control_generate_messages_nodejs/fast:
+	cd /home/pi/winch_ws/build && $(MAKE) -f system_control/CMakeFiles/system_control_generate_messages_nodejs.dir/build.make system_control/CMakeFiles/system_control_generate_messages_nodejs.dir/build
+.PHONY : system_control_generate_messages_nodejs/fast
 
 # Convenience name for target.
 system_control/CMakeFiles/system_control_geneus.dir/rule:
@@ -299,21 +314,6 @@ system_control_gennodejs: system_control/CMakeFiles/system_control_gennodejs.dir
 system_control_gennodejs/fast:
 	cd /home/pi/winch_ws/build && $(MAKE) -f system_control/CMakeFiles/system_control_gennodejs.dir/build.make system_control/CMakeFiles/system_control_gennodejs.dir/build
 .PHONY : system_control_gennodejs/fast
-
-# Convenience name for target.
-system_control/CMakeFiles/calibrate_1to2.dir/rule:
-	cd /home/pi/winch_ws/build && $(MAKE) -f CMakeFiles/Makefile2 system_control/CMakeFiles/calibrate_1to2.dir/rule
-.PHONY : system_control/CMakeFiles/calibrate_1to2.dir/rule
-
-# Convenience name for target.
-calibrate_1to2: system_control/CMakeFiles/calibrate_1to2.dir/rule
-
-.PHONY : calibrate_1to2
-
-# fast build rule for target.
-calibrate_1to2/fast:
-	cd /home/pi/winch_ws/build && $(MAKE) -f system_control/CMakeFiles/calibrate_1to2.dir/build.make system_control/CMakeFiles/calibrate_1to2.dir/build
-.PHONY : calibrate_1to2/fast
 
 # Convenience name for target.
 system_control/CMakeFiles/system_control_generate_messages.dir/rule:
@@ -449,90 +449,6 @@ setup_winch1: system_control/CMakeFiles/setup_winch1.dir/rule
 setup_winch1/fast:
 	cd /home/pi/winch_ws/build && $(MAKE) -f system_control/CMakeFiles/setup_winch1.dir/build.make system_control/CMakeFiles/setup_winch1.dir/build
 .PHONY : setup_winch1/fast
-
-# Convenience name for target.
-system_control/CMakeFiles/system_control_generate_messages_nodejs.dir/rule:
-	cd /home/pi/winch_ws/build && $(MAKE) -f CMakeFiles/Makefile2 system_control/CMakeFiles/system_control_generate_messages_nodejs.dir/rule
-.PHONY : system_control/CMakeFiles/system_control_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-system_control_generate_messages_nodejs: system_control/CMakeFiles/system_control_generate_messages_nodejs.dir/rule
-
-.PHONY : system_control_generate_messages_nodejs
-
-# fast build rule for target.
-system_control_generate_messages_nodejs/fast:
-	cd /home/pi/winch_ws/build && $(MAKE) -f system_control/CMakeFiles/system_control_generate_messages_nodejs.dir/build.make system_control/CMakeFiles/system_control_generate_messages_nodejs.dir/build
-.PHONY : system_control_generate_messages_nodejs/fast
-
-# Convenience name for target.
-system_control/CMakeFiles/calibrate_1to3.dir/rule:
-	cd /home/pi/winch_ws/build && $(MAKE) -f CMakeFiles/Makefile2 system_control/CMakeFiles/calibrate_1to3.dir/rule
-.PHONY : system_control/CMakeFiles/calibrate_1to3.dir/rule
-
-# Convenience name for target.
-calibrate_1to3: system_control/CMakeFiles/calibrate_1to3.dir/rule
-
-.PHONY : calibrate_1to3
-
-# fast build rule for target.
-calibrate_1to3/fast:
-	cd /home/pi/winch_ws/build && $(MAKE) -f system_control/CMakeFiles/calibrate_1to3.dir/build.make system_control/CMakeFiles/calibrate_1to3.dir/build
-.PHONY : calibrate_1to3/fast
-
-src/calibrate_1to2.o: src/calibrate_1to2.cpp.o
-
-.PHONY : src/calibrate_1to2.o
-
-# target to build an object file
-src/calibrate_1to2.cpp.o:
-	cd /home/pi/winch_ws/build && $(MAKE) -f system_control/CMakeFiles/calibrate_1to2.dir/build.make system_control/CMakeFiles/calibrate_1to2.dir/src/calibrate_1to2.cpp.o
-.PHONY : src/calibrate_1to2.cpp.o
-
-src/calibrate_1to2.i: src/calibrate_1to2.cpp.i
-
-.PHONY : src/calibrate_1to2.i
-
-# target to preprocess a source file
-src/calibrate_1to2.cpp.i:
-	cd /home/pi/winch_ws/build && $(MAKE) -f system_control/CMakeFiles/calibrate_1to2.dir/build.make system_control/CMakeFiles/calibrate_1to2.dir/src/calibrate_1to2.cpp.i
-.PHONY : src/calibrate_1to2.cpp.i
-
-src/calibrate_1to2.s: src/calibrate_1to2.cpp.s
-
-.PHONY : src/calibrate_1to2.s
-
-# target to generate assembly for a file
-src/calibrate_1to2.cpp.s:
-	cd /home/pi/winch_ws/build && $(MAKE) -f system_control/CMakeFiles/calibrate_1to2.dir/build.make system_control/CMakeFiles/calibrate_1to2.dir/src/calibrate_1to2.cpp.s
-.PHONY : src/calibrate_1to2.cpp.s
-
-src/calibrate_1to3.o: src/calibrate_1to3.cpp.o
-
-.PHONY : src/calibrate_1to3.o
-
-# target to build an object file
-src/calibrate_1to3.cpp.o:
-	cd /home/pi/winch_ws/build && $(MAKE) -f system_control/CMakeFiles/calibrate_1to3.dir/build.make system_control/CMakeFiles/calibrate_1to3.dir/src/calibrate_1to3.cpp.o
-.PHONY : src/calibrate_1to3.cpp.o
-
-src/calibrate_1to3.i: src/calibrate_1to3.cpp.i
-
-.PHONY : src/calibrate_1to3.i
-
-# target to preprocess a source file
-src/calibrate_1to3.cpp.i:
-	cd /home/pi/winch_ws/build && $(MAKE) -f system_control/CMakeFiles/calibrate_1to3.dir/build.make system_control/CMakeFiles/calibrate_1to3.dir/src/calibrate_1to3.cpp.i
-.PHONY : src/calibrate_1to3.cpp.i
-
-src/calibrate_1to3.s: src/calibrate_1to3.cpp.s
-
-.PHONY : src/calibrate_1to3.s
-
-# target to generate assembly for a file
-src/calibrate_1to3.cpp.s:
-	cd /home/pi/winch_ws/build && $(MAKE) -f system_control/CMakeFiles/calibrate_1to3.dir/build.make system_control/CMakeFiles/calibrate_1to3.dir/src/calibrate_1to3.cpp.s
-.PHONY : src/calibrate_1to3.cpp.s
 
 src/constant_velocity_control.o: src/constant_velocity_control.cpp.o
 
@@ -678,9 +594,8 @@ help:
 	@echo "... install/strip"
 	@echo "... install/local"
 	@echo "... install"
-	@echo "... rebuild_cache"
-	@echo "... edit_cache"
 	@echo "... system_control_generate_messages_lisp"
+	@echo "... system_control_generate_messages_nodejs"
 	@echo "... test"
 	@echo "... system_control_geneus"
 	@echo "... system_control_genlisp"
@@ -690,25 +605,18 @@ help:
 	@echo "... list_install_components"
 	@echo "... _system_control_generate_messages_check_deps_Record"
 	@echo "... _system_control_generate_messages_check_deps_Timing"
+	@echo "... rebuild_cache"
 	@echo "... system_control_gennodejs"
-	@echo "... calibrate_1to2"
 	@echo "... system_control_generate_messages"
 	@echo "... system_control_generate_messages_py"
 	@echo "... system_control_generate_messages_cpp"
 	@echo "... position_control_winch1"
 	@echo "... constant_velocity_control"
 	@echo "... x_axis_position_control"
+	@echo "... edit_cache"
 	@echo "... _system_control_generate_messages_check_deps_adder"
 	@echo "... test_kinematics"
 	@echo "... setup_winch1"
-	@echo "... system_control_generate_messages_nodejs"
-	@echo "... calibrate_1to3"
-	@echo "... src/calibrate_1to2.o"
-	@echo "... src/calibrate_1to2.i"
-	@echo "... src/calibrate_1to2.s"
-	@echo "... src/calibrate_1to3.o"
-	@echo "... src/calibrate_1to3.i"
-	@echo "... src/calibrate_1to3.s"
 	@echo "... src/constant_velocity_control.o"
 	@echo "... src/constant_velocity_control.i"
 	@echo "... src/constant_velocity_control.s"
