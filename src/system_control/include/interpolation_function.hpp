@@ -41,6 +41,11 @@ public:
             return desX;
         }
     }
+    
+    double liner(double desTime, double curTime, double desX)
+    {
+        return (desX / desTime) * curTime;
+    }
 };
 
 #endif // INTERPOLATION_FUNCTION_HPP

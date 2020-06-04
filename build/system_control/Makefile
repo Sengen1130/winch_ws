@@ -101,6 +101,17 @@ rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
 
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
+
 # Special rule for the target test
 test:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
@@ -121,17 +132,6 @@ list_install_components:
 list_install_components/fast: list_install_components
 
 .PHONY : list_install_components/fast
-
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -194,21 +194,6 @@ system_control_geneus: system_control/CMakeFiles/system_control_geneus.dir/rule
 system_control_geneus/fast:
 	cd /home/pi/winch_ws/build && $(MAKE) -f system_control/CMakeFiles/system_control_geneus.dir/build.make system_control/CMakeFiles/system_control_geneus.dir/build
 .PHONY : system_control_geneus/fast
-
-# Convenience name for target.
-system_control/CMakeFiles/winch.dir/rule:
-	cd /home/pi/winch_ws/build && $(MAKE) -f CMakeFiles/Makefile2 system_control/CMakeFiles/winch.dir/rule
-.PHONY : system_control/CMakeFiles/winch.dir/rule
-
-# Convenience name for target.
-winch: system_control/CMakeFiles/winch.dir/rule
-
-.PHONY : winch
-
-# fast build rule for target.
-winch/fast:
-	cd /home/pi/winch_ws/build && $(MAKE) -f system_control/CMakeFiles/winch.dir/build.make system_control/CMakeFiles/winch.dir/build
-.PHONY : winch/fast
 
 # Convenience name for target.
 system_control/CMakeFiles/system_control_genlisp.dir/rule:
@@ -391,6 +376,36 @@ position_control_winch1/fast:
 .PHONY : position_control_winch1/fast
 
 # Convenience name for target.
+system_control/CMakeFiles/constant_velocity_control.dir/rule:
+	cd /home/pi/winch_ws/build && $(MAKE) -f CMakeFiles/Makefile2 system_control/CMakeFiles/constant_velocity_control.dir/rule
+.PHONY : system_control/CMakeFiles/constant_velocity_control.dir/rule
+
+# Convenience name for target.
+constant_velocity_control: system_control/CMakeFiles/constant_velocity_control.dir/rule
+
+.PHONY : constant_velocity_control
+
+# fast build rule for target.
+constant_velocity_control/fast:
+	cd /home/pi/winch_ws/build && $(MAKE) -f system_control/CMakeFiles/constant_velocity_control.dir/build.make system_control/CMakeFiles/constant_velocity_control.dir/build
+.PHONY : constant_velocity_control/fast
+
+# Convenience name for target.
+system_control/CMakeFiles/x_axis_position_control.dir/rule:
+	cd /home/pi/winch_ws/build && $(MAKE) -f CMakeFiles/Makefile2 system_control/CMakeFiles/x_axis_position_control.dir/rule
+.PHONY : system_control/CMakeFiles/x_axis_position_control.dir/rule
+
+# Convenience name for target.
+x_axis_position_control: system_control/CMakeFiles/x_axis_position_control.dir/rule
+
+.PHONY : x_axis_position_control
+
+# fast build rule for target.
+x_axis_position_control/fast:
+	cd /home/pi/winch_ws/build && $(MAKE) -f system_control/CMakeFiles/x_axis_position_control.dir/build.make system_control/CMakeFiles/x_axis_position_control.dir/build
+.PHONY : x_axis_position_control/fast
+
+# Convenience name for target.
 system_control/CMakeFiles/_system_control_generate_messages_check_deps_adder.dir/rule:
 	cd /home/pi/winch_ws/build && $(MAKE) -f CMakeFiles/Makefile2 system_control/CMakeFiles/_system_control_generate_messages_check_deps_adder.dir/rule
 .PHONY : system_control/CMakeFiles/_system_control_generate_messages_check_deps_adder.dir/rule
@@ -519,6 +534,33 @@ src/calibrate_1to3.cpp.s:
 	cd /home/pi/winch_ws/build && $(MAKE) -f system_control/CMakeFiles/calibrate_1to3.dir/build.make system_control/CMakeFiles/calibrate_1to3.dir/src/calibrate_1to3.cpp.s
 .PHONY : src/calibrate_1to3.cpp.s
 
+src/constant_velocity_control.o: src/constant_velocity_control.cpp.o
+
+.PHONY : src/constant_velocity_control.o
+
+# target to build an object file
+src/constant_velocity_control.cpp.o:
+	cd /home/pi/winch_ws/build && $(MAKE) -f system_control/CMakeFiles/constant_velocity_control.dir/build.make system_control/CMakeFiles/constant_velocity_control.dir/src/constant_velocity_control.cpp.o
+.PHONY : src/constant_velocity_control.cpp.o
+
+src/constant_velocity_control.i: src/constant_velocity_control.cpp.i
+
+.PHONY : src/constant_velocity_control.i
+
+# target to preprocess a source file
+src/constant_velocity_control.cpp.i:
+	cd /home/pi/winch_ws/build && $(MAKE) -f system_control/CMakeFiles/constant_velocity_control.dir/build.make system_control/CMakeFiles/constant_velocity_control.dir/src/constant_velocity_control.cpp.i
+.PHONY : src/constant_velocity_control.cpp.i
+
+src/constant_velocity_control.s: src/constant_velocity_control.cpp.s
+
+.PHONY : src/constant_velocity_control.s
+
+# target to generate assembly for a file
+src/constant_velocity_control.cpp.s:
+	cd /home/pi/winch_ws/build && $(MAKE) -f system_control/CMakeFiles/constant_velocity_control.dir/build.make system_control/CMakeFiles/constant_velocity_control.dir/src/constant_velocity_control.cpp.s
+.PHONY : src/constant_velocity_control.cpp.s
+
 src/position_control_winch1.o: src/position_control_winch1.cpp.o
 
 .PHONY : src/position_control_winch1.o
@@ -600,32 +642,32 @@ src/test_kinematics.cpp.s:
 	cd /home/pi/winch_ws/build && $(MAKE) -f system_control/CMakeFiles/test_kinematics.dir/build.make system_control/CMakeFiles/test_kinematics.dir/src/test_kinematics.cpp.s
 .PHONY : src/test_kinematics.cpp.s
 
-src/winch.o: src/winch.cpp.o
+src/x_axis_position_control.o: src/x_axis_position_control.cpp.o
 
-.PHONY : src/winch.o
+.PHONY : src/x_axis_position_control.o
 
 # target to build an object file
-src/winch.cpp.o:
-	cd /home/pi/winch_ws/build && $(MAKE) -f system_control/CMakeFiles/winch.dir/build.make system_control/CMakeFiles/winch.dir/src/winch.cpp.o
-.PHONY : src/winch.cpp.o
+src/x_axis_position_control.cpp.o:
+	cd /home/pi/winch_ws/build && $(MAKE) -f system_control/CMakeFiles/x_axis_position_control.dir/build.make system_control/CMakeFiles/x_axis_position_control.dir/src/x_axis_position_control.cpp.o
+.PHONY : src/x_axis_position_control.cpp.o
 
-src/winch.i: src/winch.cpp.i
+src/x_axis_position_control.i: src/x_axis_position_control.cpp.i
 
-.PHONY : src/winch.i
+.PHONY : src/x_axis_position_control.i
 
 # target to preprocess a source file
-src/winch.cpp.i:
-	cd /home/pi/winch_ws/build && $(MAKE) -f system_control/CMakeFiles/winch.dir/build.make system_control/CMakeFiles/winch.dir/src/winch.cpp.i
-.PHONY : src/winch.cpp.i
+src/x_axis_position_control.cpp.i:
+	cd /home/pi/winch_ws/build && $(MAKE) -f system_control/CMakeFiles/x_axis_position_control.dir/build.make system_control/CMakeFiles/x_axis_position_control.dir/src/x_axis_position_control.cpp.i
+.PHONY : src/x_axis_position_control.cpp.i
 
-src/winch.s: src/winch.cpp.s
+src/x_axis_position_control.s: src/x_axis_position_control.cpp.s
 
-.PHONY : src/winch.s
+.PHONY : src/x_axis_position_control.s
 
 # target to generate assembly for a file
-src/winch.cpp.s:
-	cd /home/pi/winch_ws/build && $(MAKE) -f system_control/CMakeFiles/winch.dir/build.make system_control/CMakeFiles/winch.dir/src/winch.cpp.s
-.PHONY : src/winch.cpp.s
+src/x_axis_position_control.cpp.s:
+	cd /home/pi/winch_ws/build && $(MAKE) -f system_control/CMakeFiles/x_axis_position_control.dir/build.make system_control/CMakeFiles/x_axis_position_control.dir/src/x_axis_position_control.cpp.s
+.PHONY : src/x_axis_position_control.cpp.s
 
 # Help Target
 help:
@@ -637,10 +679,10 @@ help:
 	@echo "... install/local"
 	@echo "... install"
 	@echo "... rebuild_cache"
+	@echo "... edit_cache"
 	@echo "... system_control_generate_messages_lisp"
 	@echo "... test"
 	@echo "... system_control_geneus"
-	@echo "... winch"
 	@echo "... system_control_genlisp"
 	@echo "... system_control_gencpp"
 	@echo "... system_control_genpy"
@@ -654,18 +696,22 @@ help:
 	@echo "... system_control_generate_messages_py"
 	@echo "... system_control_generate_messages_cpp"
 	@echo "... position_control_winch1"
+	@echo "... constant_velocity_control"
+	@echo "... x_axis_position_control"
 	@echo "... _system_control_generate_messages_check_deps_adder"
 	@echo "... test_kinematics"
 	@echo "... setup_winch1"
 	@echo "... system_control_generate_messages_nodejs"
 	@echo "... calibrate_1to3"
-	@echo "... edit_cache"
 	@echo "... src/calibrate_1to2.o"
 	@echo "... src/calibrate_1to2.i"
 	@echo "... src/calibrate_1to2.s"
 	@echo "... src/calibrate_1to3.o"
 	@echo "... src/calibrate_1to3.i"
 	@echo "... src/calibrate_1to3.s"
+	@echo "... src/constant_velocity_control.o"
+	@echo "... src/constant_velocity_control.i"
+	@echo "... src/constant_velocity_control.s"
 	@echo "... src/position_control_winch1.o"
 	@echo "... src/position_control_winch1.i"
 	@echo "... src/position_control_winch1.s"
@@ -675,9 +721,9 @@ help:
 	@echo "... src/test_kinematics.o"
 	@echo "... src/test_kinematics.i"
 	@echo "... src/test_kinematics.s"
-	@echo "... src/winch.o"
-	@echo "... src/winch.i"
-	@echo "... src/winch.s"
+	@echo "... src/x_axis_position_control.o"
+	@echo "... src/x_axis_position_control.i"
+	@echo "... src/x_axis_position_control.s"
 .PHONY : help
 
 

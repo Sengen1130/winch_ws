@@ -5,6 +5,12 @@ system_control/CMakeFiles/position_control_winch1.dir/src/position_control_winch
  /home/pi/winch_ws/devel/include/sensor/adder.h
  /home/pi/winch_ws/devel/include/system_control/Record.h
  /home/pi/winch_ws/devel/include/system_control/Timing.h
+ /home/pi/winch_ws/src/system_control/include/computed_torque.hpp
+ /home/pi/winch_ws/src/system_control/include/digital_filter.hpp
+ /home/pi/winch_ws/src/system_control/include/digital_to_analog.hpp
+ /home/pi/winch_ws/src/system_control/include/interpolation_function.hpp
+ /home/pi/winch_ws/src/system_control/include/kinematics.hpp
+ /home/pi/winch_ws/src/system_control/include/position_control_winch.hpp
  /home/pi/winch_ws/src/system_control/src/position_control_winch1.cpp
  /opt/ros/kinetic/include/geometry_msgs/Vector3.h
  /opt/ros/kinetic/include/ros/advertise_options.h

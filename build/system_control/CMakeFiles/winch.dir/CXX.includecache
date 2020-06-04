@@ -54,15 +54,15 @@ ros/builtin_message_traits.h
 ros/message_operations.h
 -
 
-/home/pi/winch_ws/src/system_control/src/computed_torque.hpp
+/home/pi/winch_ws/src/system_control/include/computed_torque.hpp
 cmath
 -
 
-/home/pi/winch_ws/src/system_control/src/digital_filter.hpp
+/home/pi/winch_ws/src/system_control/include/digital_filter.hpp
 cmath
 -
 
-/home/pi/winch_ws/src/system_control/src/digital_to_analog.hpp
+/home/pi/winch_ws/src/system_control/include/digital_to_analog.hpp
 cstdio
 -
 sys/types.h
@@ -82,39 +82,17 @@ inttypes.h
 linux/i2c-dev.h
 -
 
-/home/pi/winch_ws/src/system_control/src/interpolation_function.hpp
+/home/pi/winch_ws/src/system_control/include/interpolation_function.hpp
 cmath
 -
 
-/home/pi/winch_ws/src/system_control/src/kinematics.hpp
+/home/pi/winch_ws/src/system_control/include/kinematics.hpp
 ros/ros.h
 -
 cmath
 -
 
-/home/pi/winch_ws/src/system_control/src/winch.cpp
-winch.hpp
-/home/pi/winch_ws/src/system_control/src/winch.hpp
-digital_to_analog.hpp
-/home/pi/winch_ws/src/system_control/src/digital_to_analog.hpp
-digital_filter.hpp
-/home/pi/winch_ws/src/system_control/src/digital_filter.hpp
-computed_torque.hpp
-/home/pi/winch_ws/src/system_control/src/computed_torque.hpp
-interpolation_function.hpp
-/home/pi/winch_ws/src/system_control/src/interpolation_function.hpp
-kinematics.hpp
-/home/pi/winch_ws/src/system_control/src/kinematics.hpp
-ros/ros.h
--
-cmath
--
-iostream
--
-time.h
--
-
-/home/pi/winch_ws/src/system_control/src/winch.hpp
+/home/pi/winch_ws/src/system_control/include/winch.hpp
 ros/ros.h
 -
 geometry_msgs/Vector3.h
@@ -130,6 +108,28 @@ system_control/Record.h
 system_control/Timing.h
 -
 iostream
+-
+
+/home/pi/winch_ws/src/system_control/src/winch.cpp
+/home/pi/winch_ws/src/system_control/include/winch.hpp
+-
+/home/pi/winch_ws/src/system_control/include/digital_to_analog.hpp
+-
+/home/pi/winch_ws/src/system_control/include/digital_filter.hpp
+-
+/home/pi/winch_ws/src/system_control/include/computed_torque.hpp
+-
+/home/pi/winch_ws/src/system_control/include/interpolation_function.hpp
+-
+/home/pi/winch_ws/src/system_control/include/kinematics.hpp
+-
+ros/ros.h
+-
+cmath
+-
+iostream
+-
+time.h
 -
 
 /opt/ros/kinetic/include/geometry_msgs/Vector3.h

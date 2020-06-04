@@ -12,6 +12,8 @@ public:
     double winchPos3[3] = {2.5, 5.0, 0}; //winch3の設置位置
     double wireLen;
     geometry_msgs::Vector3 pos;
+    double posX;
+    double w2;
 
     //winch三台での順運動学
     //交点の位置(pos.x, pos.y, pos.zの位置を出力)
@@ -27,7 +29,12 @@ public:
 
         return pos;
     }
-
+    
+    double x_axis_foward_kinematics(double w1, double w2)
+    {
+        return posX = (pow(w1, 2) - pow(w2, 2) + pow(winchPos2[0], 2)) / (2 * winchPos2[0]);
+    }
+    
     //winch三台での逆運動学
     //winchのワイヤ長さを出力
     //
@@ -39,6 +46,12 @@ public:
 
         return wireLen;
     }
+    
+    double x_axis_inverse_kinematics(double w1, double posX)
+    {
+        return w2 = sqrt(abs(2 * winchPos2[0] * posX - pow(w1, 2) - pow(winchPos2[0], 2)));
+    }
+
 };
 
 #endif // KINEMATICS_HPP

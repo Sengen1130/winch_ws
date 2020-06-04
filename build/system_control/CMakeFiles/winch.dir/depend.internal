@@ -5,13 +5,13 @@ system_control/CMakeFiles/winch.dir/src/winch.cpp.o
  /home/pi/winch_ws/devel/include/sensor/adder.h
  /home/pi/winch_ws/devel/include/system_control/Record.h
  /home/pi/winch_ws/devel/include/system_control/Timing.h
- /home/pi/winch_ws/src/system_control/src/computed_torque.hpp
- /home/pi/winch_ws/src/system_control/src/digital_filter.hpp
- /home/pi/winch_ws/src/system_control/src/digital_to_analog.hpp
- /home/pi/winch_ws/src/system_control/src/interpolation_function.hpp
- /home/pi/winch_ws/src/system_control/src/kinematics.hpp
+ /home/pi/winch_ws/src/system_control/include/computed_torque.hpp
+ /home/pi/winch_ws/src/system_control/include/digital_filter.hpp
+ /home/pi/winch_ws/src/system_control/include/digital_to_analog.hpp
+ /home/pi/winch_ws/src/system_control/include/interpolation_function.hpp
+ /home/pi/winch_ws/src/system_control/include/kinematics.hpp
+ /home/pi/winch_ws/src/system_control/include/winch.hpp
  /home/pi/winch_ws/src/system_control/src/winch.cpp
- /home/pi/winch_ws/src/system_control/src/winch.hpp
  /opt/ros/kinetic/include/geometry_msgs/Vector3.h
  /opt/ros/kinetic/include/ros/advertise_options.h
  /opt/ros/kinetic/include/ros/advertise_service_options.h

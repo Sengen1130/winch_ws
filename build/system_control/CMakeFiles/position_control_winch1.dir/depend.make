@@ -4,6 +4,12 @@
 system_control/CMakeFiles/position_control_winch1.dir/src/position_control_winch1.cpp.o: /home/pi/winch_ws/devel/include/sensor/adder.h
 system_control/CMakeFiles/position_control_winch1.dir/src/position_control_winch1.cpp.o: /home/pi/winch_ws/devel/include/system_control/Record.h
 system_control/CMakeFiles/position_control_winch1.dir/src/position_control_winch1.cpp.o: /home/pi/winch_ws/devel/include/system_control/Timing.h
+system_control/CMakeFiles/position_control_winch1.dir/src/position_control_winch1.cpp.o: /home/pi/winch_ws/src/system_control/include/computed_torque.hpp
+system_control/CMakeFiles/position_control_winch1.dir/src/position_control_winch1.cpp.o: /home/pi/winch_ws/src/system_control/include/digital_filter.hpp
+system_control/CMakeFiles/position_control_winch1.dir/src/position_control_winch1.cpp.o: /home/pi/winch_ws/src/system_control/include/digital_to_analog.hpp
+system_control/CMakeFiles/position_control_winch1.dir/src/position_control_winch1.cpp.o: /home/pi/winch_ws/src/system_control/include/interpolation_function.hpp
+system_control/CMakeFiles/position_control_winch1.dir/src/position_control_winch1.cpp.o: /home/pi/winch_ws/src/system_control/include/kinematics.hpp
+system_control/CMakeFiles/position_control_winch1.dir/src/position_control_winch1.cpp.o: /home/pi/winch_ws/src/system_control/include/position_control_winch.hpp
 system_control/CMakeFiles/position_control_winch1.dir/src/position_control_winch1.cpp.o: /home/pi/winch_ws/src/system_control/src/position_control_winch1.cpp
 system_control/CMakeFiles/position_control_winch1.dir/src/position_control_winch1.cpp.o: /opt/ros/kinetic/include/geometry_msgs/Vector3.h
 system_control/CMakeFiles/position_control_winch1.dir/src/position_control_winch1.cpp.o: /opt/ros/kinetic/include/ros/advertise_options.h

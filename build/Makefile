@@ -686,19 +686,6 @@ system_control_geneus/fast:
 .PHONY : system_control_geneus/fast
 
 #=============================================================================
-# Target rules for targets named winch
-
-# Build rule for target.
-winch: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 winch
-.PHONY : winch
-
-# fast build rule for target.
-winch/fast:
-	$(MAKE) -f system_control/CMakeFiles/winch.dir/build.make system_control/CMakeFiles/winch.dir/build
-.PHONY : winch/fast
-
-#=============================================================================
 # Target rules for targets named system_control_genlisp
 
 # Build rule for target.
@@ -855,6 +842,32 @@ position_control_winch1/fast:
 .PHONY : position_control_winch1/fast
 
 #=============================================================================
+# Target rules for targets named constant_velocity_control
+
+# Build rule for target.
+constant_velocity_control: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 constant_velocity_control
+.PHONY : constant_velocity_control
+
+# fast build rule for target.
+constant_velocity_control/fast:
+	$(MAKE) -f system_control/CMakeFiles/constant_velocity_control.dir/build.make system_control/CMakeFiles/constant_velocity_control.dir/build
+.PHONY : constant_velocity_control/fast
+
+#=============================================================================
+# Target rules for targets named x_axis_position_control
+
+# Build rule for target.
+x_axis_position_control: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 x_axis_position_control
+.PHONY : x_axis_position_control
+
+# fast build rule for target.
+x_axis_position_control/fast:
+	$(MAKE) -f system_control/CMakeFiles/x_axis_position_control.dir/build.make system_control/CMakeFiles/x_axis_position_control.dir/build
+.PHONY : x_axis_position_control/fast
+
+#=============================================================================
 # Target rules for targets named _system_control_generate_messages_check_deps_adder
 
 # Build rule for target.
@@ -972,7 +985,6 @@ help:
 	@echo "... sensor_generate_messages_lisp"
 	@echo "... system_control_generate_messages_lisp"
 	@echo "... system_control_geneus"
-	@echo "... winch"
 	@echo "... system_control_genlisp"
 	@echo "... system_control_gencpp"
 	@echo "... system_control_genpy"
@@ -985,6 +997,8 @@ help:
 	@echo "... system_control_generate_messages_py"
 	@echo "... system_control_generate_messages_cpp"
 	@echo "... position_control_winch1"
+	@echo "... constant_velocity_control"
+	@echo "... x_axis_position_control"
 	@echo "... _system_control_generate_messages_check_deps_adder"
 	@echo "... test_kinematics"
 	@echo "... setup_winch1"

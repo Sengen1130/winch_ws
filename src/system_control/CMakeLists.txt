@@ -44,31 +44,53 @@ include_directories(
 )
 
 # add_executable(${PROJECT_NAME}_node src/sensor_node.cpp)
- add_executable(winch
-  src/winch.cpp
-  src/computed_torque.hpp
-  src/digital_filter.hpp
-  src/digital_to_analog.hpp
-  src/interpolation_function.hpp
-  src/kinematics.hpp
-  src/winch.hpp
-  )
-  
-#add_dependencies(measure_encoder_winch1 ${$PEOJECT_NAME}_EXPORTED_TARGETS}${catkin_EXPORTED_TARGETS})
- target_link_libraries(winch
-   ${catkin_LIBRARIES}
- )
-
-# add_executable(${PROJECT_NAME}_node src/sensor_node.cpp)
  add_executable(position_control_winch1
   src/position_control_winch1.cpp
+  include/computed_torque.hpp
+  include/digital_filter.hpp
+  include/digital_to_analog.hpp
+  include/interpolation_function.hpp
+  include/kinematics.hpp
+  include/position_control_winch.hpp
   )
   
 #add_dependencies(measure_encoder_winch1 ${$PEOJECT_NAME}_EXPORTED_TARGETS}${catkin_EXPORTED_TARGETS})
  target_link_libraries(position_control_winch1
    ${catkin_LIBRARIES}
  )
- 
+
+# add_executable(${PROJECT_NAME}_node src/sensor_node.cpp)
+ add_executable(constant_velocity_control
+  src/constant_velocity_control.cpp
+  include/computed_torque.hpp
+  include/digital_filter.hpp
+  include/digital_to_analog.hpp
+  include/interpolation_function.hpp
+  include/kinematics.hpp
+  include/constant_velocity_control.hpp
+  )
+  
+#add_dependencies(measure_encoder_winch1 ${$PEOJECT_NAME}_EXPORTED_TARGETS}${catkin_EXPORTED_TARGETS})
+ target_link_libraries(constant_velocity_control
+   ${catkin_LIBRARIES}
+ )
+
+# add_executable(${PROJECT_NAME}_node src/sensor_node.cpp)
+ add_executable(x_axis_position_control
+  src/x_axis_position_control.cpp
+  include/computed_torque.hpp
+  include/digital_filter.hpp
+  include/digital_to_analog.hpp
+  include/interpolation_function.hpp
+  include/kinematics.hpp
+  include/x_axis_position_control.hpp
+  )
+  
+#add_dependencies(measure_encoder_winch1 ${$PEOJECT_NAME}_EXPORTED_TARGETS}${catkin_EXPORTED_TARGETS})
+ target_link_libraries(x_axis_position_control
+   ${catkin_LIBRARIES}
+ )
+
  # add_executable(${PROJECT_NAME}_node src/sensor_node.cpp)
  add_executable(test_kinematics
   src/test_kinematics.cpp
