@@ -26,8 +26,6 @@ XAxisPos::XAxisPos(){
     finish_time_sub = nh.subscribe("finish_time", 10, &XAxisPos::finish_time_callback, this);                      //終了時刻のsubscribe宣言
     finish_x_axis_position_sub = nh.subscribe("finish_x_axis_position", 10, &XAxisPos::finish_x_axis_position_callback, this);          //目標交点位置のsubscribe宣言
     finLen_constVel_sub = nh.subscribe("finLen_constVel", 10, &XAxisPos::finLen_constVel_callback, this);                         //開始時刻のsubscribe宣言
-    
-    record_pub.publish(msg_record);
 };
 
 //ロータリーエンコーダからカウント値を得る
@@ -134,8 +132,8 @@ int main(int argc, char **argv)
     xAxisPos.prevTime = xAxisPos.T0; //prevTimeの設定
     
     /////////////////////////////////////
-    xAxisPos.iniLen_constVel = 3.0; 
-    xAxisPos.iniLen_xAxisPos = 3.0;
+    xAxisPos.iniLen_constVel = 5.0; 
+    xAxisPos.iniLen_xAxisPos = 5.0;
     ////////////////////////////////////
 
     //条件実行文の説明
@@ -149,7 +147,7 @@ int main(int argc, char **argv)
         xAxisPos.curDesPosX = xAxisPos.iniPosX + interpolation.liner(xAxisPos.desTime, (xAxisPos.curTime - xAxisPos.T0).toSec(), (xAxisPos.iniPosX - xAxisPos.finPosX));
         xAxisPos.curLen = (xAxisPos.d * xAxisPos.PI * xAxisPos.curCount) / 4096.0;     //現在の長さ
         xAxisPos.curLen_constVel = xAxisPos.iniLen_constVel - interpolation.liner(xAxisPos.desTime, (xAxisPos.curTime - xAxisPos.T0).toSec(), xAxisPos.finLen_constVel);
-        xAxisPos.curDesLen = xAxisPos.iniLen_xAxisPos - kinematics.x_axis_inverse_kinematics(xAxisPos.curLen_constVel, xAxisPos.curDesPosX); //現在の目標長さ
+        xAxisPos.curDesLen = kinematics.x_axis_inverse_kinematics(xAxisPos.curLen_constVel, xAxisPos.curDesPosX); //現在の目標長さ
         xAxisPos.curDesCount = (xAxisPos.curDesLen * 4096.0) / (xAxisPos.d * xAxisPos.PI);
         xAxisPos.curDesCountVel = (xAxisPos.curDesCount - xAxisPos.prevDesCount) / xAxisPos.diff;
         xAxisPos.curDesCountAcc = (xAxisPos.curDesCountVel - xAxisPos.prevDesCountVel) / xAxisPos.diff;
@@ -157,16 +155,16 @@ int main(int argc, char **argv)
         xAxisPos.curCountVel = filter.low_pass_filter(xAxisPos.inpCountVel, xAxisPos.inpCountVel1, xAxisPos.inpCountVel2, xAxisPos.outCountVel1, xAxisPos.outCountVel2);
         xAxisPos.input = torque.input_volt(xAxisPos.curDesCount, xAxisPos.curDesCountVel, xAxisPos.curCount, xAxisPos.curCountVel, xAxisPos.curDesCountAcc); //モータドライバへの入力電圧
         d2a.set_analog(d2a.volt_to_int16(xAxisPos.input), d2a.writeBuf, d2a.fd);
-        
-        std::cout <<"curDesLen="<<xAxisPos.curDesLen<<"\n";
-        std::cout <<"input="<<xAxisPos.input<<"\n";
 
         if (xAxisPos.counter == 10)
         {
             xAxisPos.msg_record.curTime = (xAxisPos.curTime - xAxisPos.T0).toSec();
             xAxisPos.msg_record.curLen = xAxisPos.curLen;
             xAxisPos.msg_record.curDesLen = xAxisPos.curDesLen;
-
+            xAxisPos.record_pub.publish(xAxisPos.msg_record);
+            //std::cout <<"curDesLen="<<xAxisPos.curDesLen<<"\n";
+            //std::cout <<"curLen_constVel="<<xAxisPos.curLen_constVel<<"\n";
+            //std::cout <<"curDesPosX="<<xAxisPos.curDesPosX<<"\n";            
             xAxisPos.counter = 0;
         }
         else

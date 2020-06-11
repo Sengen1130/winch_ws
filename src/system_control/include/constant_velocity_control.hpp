@@ -12,7 +12,8 @@
 
 class ConstVel
 {
-private:
+public:
+    ConstVel();
     ros::Publisher wire_length_pub;                          //winch1のワイヤ長さpublish宣言         /*winch1 to winch◯　◯:winch番号*/
     ros::Publisher record_pub;                         //winch1の目標長さと実際の長さpublish宣言        /*winch1 to winch◯　◯:winch番号*/
     ros::Publisher desPos_pub;                      //winch1の目標交点位置publish宣言        /*winch1 to winch◯　◯:winch番号*/
@@ -21,8 +22,6 @@ private:
     ros::Subscriber finish_time_sub;                      //終了時刻のsubscribe宣言
     ros::Subscriber finLen_constVel_sub;
     
-public:
-    ConstVel();
     void rotary_encoder_callback(const std_msgs::Int32::ConstPtr count_msg);
     void start_time_callback(const std_msgs::Float64::ConstPtr start_time_msg);
     void finish_time_callback(const std_msgs::Float64::ConstPtr finish_time_msg);

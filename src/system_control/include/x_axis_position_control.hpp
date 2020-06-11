@@ -12,7 +12,8 @@
 
 class XAxisPos
 {
-private:
+public:
+    XAxisPos();
     ros::Publisher record_pub;                         //winch1の目標長さと実際の長さpublish宣言        /*winch1 to winch◯　◯:winch番号*/
     ros::Subscriber rotary_encoder_sub;              //ロータリーエンコーダsubscribe宣言     /*winch1 to winch◯　◯:winch番号*/
     ros::Subscriber wire_length_constVel_sub; //winch2のワイヤ長さsubscribe宣言      /*winch2 to winch◯　◯:winch番号以外のもの*/
@@ -20,9 +21,6 @@ private:
     ros::Subscriber finish_time_sub;                      //終了時刻のsubscribe宣言
     ros::Subscriber finish_x_axis_position_sub;          //目標交点位置のsubscribe宣言
     ros::Subscriber finLen_constVel_sub;
-    
-public:
-    XAxisPos();
     void rotary_encoder_callback(const std_msgs::Int32::ConstPtr count_msg);
     void wire_length_constVel_callback(const std_msgs::Float64::ConstPtr wire_length_constVel_msg);
     void start_time_callback(const std_msgs::Float64::ConstPtr start_time_msg);

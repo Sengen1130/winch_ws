@@ -25,9 +25,6 @@ ConstVel::ConstVel(){
     start_time_sub = nh.subscribe("start_time", 10, &ConstVel::start_time_callback, this);                         //開始時刻のsubscribe宣言
     finish_time_sub = nh.subscribe("finish_time", 10, &ConstVel::finish_time_callback, this);                      //終了時刻のsubscribe宣言
     finLen_constVel_sub = nh.subscribe("finLen_constVel", 10, &ConstVel::finLen_constVel_callback, this);                         //開始時刻のsubscribe宣言
-    
-    wire_length_pub.publish(msg_length);                    //winch1のワイヤ長さpublish
-    record_pub.publish(msg_record);
 };
 
 //ロータリーエンコーダからカウント値を得る
@@ -90,6 +87,7 @@ int main(int argc, char **argv)
         constVel.prevCount2 = constVel.curCount;
         constVel.iniLen_constVel = constVel.d * constVel.PI * constVel.curCount / 4096.0; /*iniLen1 to iniLen◯　◯:winch番号*/
         constVel.msg_length.data = constVel.iniLen_constVel;                              /*iniLen1 to iniLen◯　◯:winch番号*/
+        constVel.wire_length_pub.publish(constVel.msg_length);                    //winch1のワイヤ長さpublish
         ros::spinOnce();                                              //購読する際に必要,callbackが呼ばれる
     }
 
@@ -101,6 +99,7 @@ int main(int argc, char **argv)
         constVel.prevCount2 = constVel.curCount;
         constVel.iniLen_constVel = constVel.d * constVel.PI * constVel.curCount / 4096.0; /*iniLen1 to iniLen◯　◯:winch番号*/
         constVel.msg_length.data = constVel.iniLen_constVel;                              /*iniLen1 to iniLen◯　◯:winch番号*/
+        constVel.wire_length_pub.publish(constVel.msg_length);                    //winch1のワイヤ長さpublish
         ros::spinOnce();                                              //購読する際に必要,callbackが呼ばれる
     }
 
@@ -114,6 +113,7 @@ int main(int argc, char **argv)
         constVel.prevCount1 = constVel.prevCount2;
         d2a.set_analog(d2a.volt_to_int16(2.50), d2a.writeBuf, d2a.fd);
         constVel.msg_length.data = constVel.iniLen_constVel;           /*iniLen1 to iniLen◯　◯:winch番号*/
+        constVel.wire_length_pub.publish(constVel.msg_length);                    //winch1のワイヤ長さpublish
         ros::spinOnce();                           //購読する際に必要,callbackが呼ばれる
     }
 
@@ -123,6 +123,8 @@ int main(int argc, char **argv)
     /////////////////////////////////
     constVel.iniLen_constVel = 5.0;
     /////////////////////////////////
+
+    std::cout << "finLen = " << constVel.finLen_constVel <<"\n";
 
     //条件実行文の説明
     //直線軌道
@@ -141,12 +143,15 @@ int main(int argc, char **argv)
         constVel.input = torque.input_volt(constVel.curDesCount, constVel.curDesCountVel, constVel.curCount, constVel.curCountVel, constVel.curDesCountAcc); //モータドライバへの入力電圧
         d2a.set_analog(d2a.volt_to_int16(constVel.input), d2a.writeBuf, d2a.fd);
 
+
+
         if (constVel.counter == 10)
         {
             constVel.msg_record.curTime = (constVel.curTime - constVel.T0).toSec();
             constVel.msg_record.curLen = constVel.curLen;
             constVel.msg_record.curDesLen = constVel.curDesLen;
-
+            std::cout << "curDesLen = " << constVel.curDesLen << "\n";
+            constVel.record_pub.publish(constVel.msg_record);
             constVel.counter = 0;
         }
         else
